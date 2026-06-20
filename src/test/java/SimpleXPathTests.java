@@ -1,3 +1,4 @@
+import com.codeborne.selenide.SelenideElement;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,5 +32,17 @@ public class SimpleXPathTests {
         open("https://slqa.ru/cases/xPathSimpleForm/");
         $x("//*[starts-with(.,'Казахстан')]").shouldHave(text("площадь 2 724 902"));
     }
+    @Test
+    void TestxPatchAddPizza() {
+        open("https://slqamsk.github.io/cases/pizza/v08/");
+        SelenideElement se1 = $x("//h3[.='Маргарита']");
+        System.out.println("Элемент с названием пиццы: тег: " + se1.getTagName() + ", текст: " + se1.text());
+        SelenideElement se2 = $x("//h3[.='Маргарита']/..");
+        System.out.println("Его родитель: тег: " + se2.getTagName() + ", текст: " + se2.text());
+        SelenideElement se3 = $x("//h3[.='Маргарита']/../button");
+        System.out.println("Кнопка: тег: " + se3.getTagName() + ", текст: " + se3.text());
+    }
+
+
 }
 
